@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import fetchData from '../../fetchData';
+import fetchData from '../../../fetchData';
 import { useEffect, useState } from 'react';
 
 export default function MovieDetails() {

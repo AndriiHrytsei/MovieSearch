@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import Navigation from './Navigation/Navigation';
-import Home from './pages/Home';
-import Movies from './pages/Movies';
-import MovieDetails from './MovieDetails/MovieDetails';
+import Home from './pages/Home/Home';
+import Movies from './pages/Movies/Movies';
+import MovieDetails from './pages/MovieDetails/MovieDetails';
 
 export default function App() {
   return (
