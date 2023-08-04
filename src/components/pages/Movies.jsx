@@ -1,5 +1,3 @@
 export default function Movies() {
-  return (
-    <div>Nothing here yet</div>
-  )
+  return <div>Nothing here yet</div>;
 }

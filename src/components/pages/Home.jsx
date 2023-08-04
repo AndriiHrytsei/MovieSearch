@@ -1,41 +1,53 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import fetchData from '../../fetchData';
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
+  const [status, setStatus] = useState('idle');
 
-  const fetchMovies = () => {
-    fetch(
-      'https://api.themoviedb.org/3/trending/all/day?api_key=ee0ed139d0a1d8fcbabd26e40efda78c&language=en-US'
-    )
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(new Error('404 not found'));
-      })
-      .then(data => {
-        setMovies(data.results);
-        setError(false);
-      })
-      .catch(error => setError(error.message));
+  const getMovies = async () => {
+    setStatus('pending');
+    try {
+      const response = await fetchData(
+        ' https://api.themoviedb.org/3/trending/movie/day?api_key=ee0ed139d0a1d8fcbabd26e40efda78c&language=en-US'
+      );
+      setMovies(response.results);
+      setError(false);
+      setStatus('resolved');
+    } catch (error) {
+      setError(error.message);
+      setStatus('rejected');
+    }
   };
+
   useEffect(() => {
-    fetchMovies();
+    getMovies();
   }, []);
 
-  if (movies.length > 0) {
+  if (status === 'pending') {
+    return <p>Loading...</p>;
+  }
+
+  if (status === 'resolved') {
     return (
-      <ul>
-        {movies.map(movie => (
-          <li>
-            <NavLink to="#">{movie.title || movie.name}</NavLink>
-          </li>
-        ))}
-      </ul>
+      <>
+        <h2>Trending today</h2>
+        <ul>
+          {movies.map(movie => (
+            <li key={movie.id}>
+              <NavLink to={`movies/${movie.id}`}>
+                {movie.title || movie.name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </>
     );
-  } else {
+  }
+
+  if (status === 'rejected') {
     return <p>{error}</p>;
   }
 }
