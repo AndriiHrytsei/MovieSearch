@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Outlet, NavLink } from 'react-router-dom';
 import fetchData from '../../../fetchData';
 import { useEffect, useState } from 'react';
 
@@ -32,40 +32,53 @@ export default function MovieDetails() {
     <p>Loading...</p>;
   }
 
+  if (status === 'rejected') {
+    return <p>{error}</p>;
+  }
+
   if (status === 'resolved') {
-    console.log(movie.genres);
     return (
-      <main>
+      <main className="movieDetailsContainer">
         <button type="button" onClick={() => navigate('/')}>
           Go back
         </button>
-        <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt=""
-          />
-        </div>
-        <div>
-          <h2>{movie.title || movie.name}</h2>
-          <p>User score: {Math.round(movie.vote_average)}/10</p>
-          <div>
-            <h3>Overview</h3>
-            <p>{movie.overview}</p>
+        <div className="movieDetails">
+          <div className="Poster">
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt=""
+            />
           </div>
           <div>
-            <h3>Genres</h3>
-            <p>
-              {movie.genres.map(genre => (
-                <span key={genre.id}>{genre.name}, </span>
-              ))}
-            </p>
+            <h2>{movie.title || movie.name}</h2>
+            <p>User score: {Math.round(movie.vote_average)}/10</p>
+            <div>
+              <h3>Overview</h3>
+              <p>{movie.overview}</p>
+            </div>
+            <div>
+              <h3>Genres</h3>
+              <p>
+                {movie.genres.map(genre => (
+                  <span key={genre.id}>{genre.name}, </span>
+                ))}
+              </p>
+            </div>
           </div>
         </div>
+        <div className="castAndReviews">
+          <p>Additional information</p>
+          <ul>
+            <li>
+              <NavLink to="cast">Cast</NavLink>
+            </li>
+            <li>
+              <NavLink to="reviews">Reviews</NavLink>
+            </li>
+          </ul>
+        </div>
+        <Outlet />
       </main>
     );
-  }
-
-  if (status === 'rejected') {
-    return <p>{error}</p>;
   }
 }

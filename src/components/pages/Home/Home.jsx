@@ -32,7 +32,7 @@ export default function Home() {
 
   if (status === 'resolved') {
     return (
-      <>
+      <main>
         <h2>Trending today</h2>
         <ul>
           {movies.map(movie => (
@@ -43,7 +43,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
-      </>
+      </main>
     );
   }
 
