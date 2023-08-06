@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import fetchData from '../../../fetchData'
+import fetchData from '../../fetchData'
 import { useParams } from "react-router-dom";
 
 export default function Reviews() {

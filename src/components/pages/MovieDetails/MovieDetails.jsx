@@ -1,6 +1,7 @@
 import { useNavigate, useParams, Outlet, NavLink } from 'react-router-dom';
 import fetchData from '../../../fetchData';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
+
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState({});
@@ -39,8 +40,9 @@ export default function MovieDetails() {
   if (status === 'resolved') {
     return (
       <main className="movieDetailsContainer">
-        <button type="button" onClick={() => navigate('/')}>
-          Go back
+        <button type="button" onClick={() => navigate(-1)}>
+          <span className="material-symbols-outlined">arrow_left_alt</span>
+          <span>Go back</span>
         </button>
         <div className="movieDetails">
           <div className="Poster">
@@ -77,7 +79,9 @@ export default function MovieDetails() {
             </li>
           </ul>
         </div>
-        <Outlet />
+        <Suspense fallback={<p>Loading page...</p>}>
+          <Outlet />
+        </Suspense>
       </main>
     );
   }

@@ -1,3 +1,14 @@
+import { useState } from 'react';
+import SearchForm from '../../SearchForm/SearchForm';
+import MovieList from 'components/MovieList/MovieList';
+
 export default function Movies() {
-  return <div>Nothing here yet</div>;
+  const [query, setQuery] = useState('');
+
+  return (
+    <main>
+      <SearchForm onSubmit={query => setQuery(query)} />
+      <MovieList data={query} />
+    </main>
+  );
 }
