@@ -13,7 +13,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
-        <Route index element={<Home />}></Route>
+        <Route index element={<Home />} />
         <Route path="movies" element={<Movies />} />
         <Route path="movies/:movieId" element={<MovieDetails />} >
           <Route path='cast' element={<Cast />}/>
