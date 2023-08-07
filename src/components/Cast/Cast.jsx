@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import fetchUsers from '../../fetchData';
 import { useParams } from 'react-router-dom';
-import css from './Cast.module.css'
+import css from './Cast.module.css';
 
 export default function Cast() {
   const [actors, setActors] = useState([]);
@@ -41,7 +41,8 @@ export default function Cast() {
             {!actor.profile_path ? (
               <p className={css.noImgAvailable}>No image available</p>
             ) : (
-              <img className={css.actorImg}
+              <img
+                className={css.actorImg}
                 src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}?api_key=ee0ed139d0a1d8fcbabd26e40efda78c`}
                 alt={actor.name}
               />

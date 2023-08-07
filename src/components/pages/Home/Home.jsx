@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import fetchData from '../../../fetchData';
-import css from './Home.module.css'
+import css from './Home.module.css';
 
 export default function Home() {
   const [movies, setMovies] = useState([]);

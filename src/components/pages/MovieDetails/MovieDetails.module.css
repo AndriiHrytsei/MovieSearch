@@ -10,9 +10,9 @@
   transition: all 0.2s ease-in;
 }
 
-.goBackBtn:hover{
+.goBackBtn:hover {
   color: #65fe08;
-  text-shadow:0px 0px 30px #65fe08;
+  text-shadow: 0px 0px 30px #65fe08;
 }
 
 .movieDetails {
@@ -21,7 +21,7 @@
   grid-template-columns: 1fr;
 }
 
-.posterBox{
+.posterBox {
   align-content: center;
   width: 100%;
 }
@@ -31,11 +31,13 @@
   max-height: 40rem;
 }
 
-.movieInfo{
+.movieInfo {
   color: #fff;
 }
 
-.additionaInfo, .overview, .movieTitle {
+.additionaInfo,
+.overview,
+.movieTitle {
   margin-block: 1rem;
   line-height: 1.3rem;
 }
@@ -45,7 +47,7 @@
   margin-bottom: 1rem;
 }
 
-.additionaInfo{
+.additionaInfo {
   color: #fff;
   padding-top: 1rem;
   border-bottom: 1px solid #414141;
@@ -59,7 +61,7 @@
 }
 
 .navLink:hover {
-  text-shadow:0px 0px 30px #65fe08;
+  text-shadow: 0px 0px 30px #65fe08;
 }
 
 @media screen and (min-width: 480px) {
@@ -68,13 +70,14 @@
   }
   .movieDetails {
     grid-template-columns: 1fr 4fr;
-    padding: .3rem 0 0 2rem;
+    padding: 0.3rem 0 0 2rem;
   }
-  .additionaInfo, .overview, .movieTitle {
+  .additionaInfo,
+  .overview,
+  .movieTitle {
     margin-block: 1.5rem;
   }
   .additionaInfo {
-    
     padding-left: 1.2rem;
   }
 }

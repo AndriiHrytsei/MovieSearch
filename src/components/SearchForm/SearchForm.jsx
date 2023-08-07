@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types'
-import css from './SearchForm.module.css'
+import PropTypes from 'prop-types';
+import css from './SearchForm.module.css';
 
 export default function SearchForm({ onSubmit }) {
   const [query, setQuery] = useState('');
@@ -11,17 +11,27 @@ export default function SearchForm({ onSubmit }) {
       return;
     }
     onSubmit(query);
-    setQuery('')
+    setQuery('');
   };
 
   return (
     <form onSubmit={handleFormSubmit} className={css.searchForm}>
-      <input type="text" name="searchInput" className={css.searchInput} id="searchInput" required autoFocus onChange={(e) => setQuery(e.currentTarget.value)}/>
-      <button type="submit" className={css.submitBtn}>Search</button>
+      <input
+        type="text"
+        name="searchInput"
+        className={css.searchInput}
+        id="searchInput"
+        required
+        autoFocus
+        onChange={e => setQuery(e.currentTarget.value)}
+      />
+      <button type="submit" className={css.submitBtn}>
+        Search
+      </button>
     </form>
   );
 }
 
 SearchForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
-}
+  onSubmit: PropTypes.func.isRequired,
+};
