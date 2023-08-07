@@ -1,0 +1,80 @@
+.goBackBtn {
+  vertical-align: middle;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  margin-block: 0.5rem;
+  margin-left: 1rem;
+  color: #fff;
+  transition: all 0.2s ease-in;
+}
+
+.goBackBtn:hover{
+  color: #65fe08;
+  text-shadow:0px 0px 30px #65fe08;
+}
+
+.movieDetails {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.posterBox{
+  align-content: center;
+  width: 100%;
+}
+
+.poster {
+  width: 100%;
+  max-height: 40rem;
+}
+
+.movieInfo{
+  color: #fff;
+}
+
+.additionaInfo, .overview, .movieTitle {
+  margin-block: 1rem;
+  line-height: 1.3rem;
+}
+
+.genres {
+  line-height: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.additionaInfo{
+  color: #fff;
+  padding-top: 1rem;
+  border-bottom: 1px solid #414141;
+  border-top: 1px solid #414141;
+}
+
+.navLink {
+  color: #65fe08;
+  font-size: 1em;
+  transition: text-shadow 0.2s ease-in;
+}
+
+.navLink:hover {
+  text-shadow:0px 0px 30px #65fe08;
+}
+
+@media screen and (min-width: 480px) {
+  .poster {
+    min-width: 15rem;
+  }
+  .movieDetails {
+    grid-template-columns: 1fr 4fr;
+    padding: .3rem 0 0 2rem;
+  }
+  .additionaInfo, .overview, .movieTitle {
+    margin-block: 1.5rem;
+  }
+  .additionaInfo {
+    
+    padding-left: 1.2rem;
+  }
+}

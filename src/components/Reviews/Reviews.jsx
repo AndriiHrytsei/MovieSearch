@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import fetchData from '../../fetchData'
 import { useParams } from "react-router-dom";
+import css from './Reviews.module.css'
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -36,9 +37,9 @@ export default function Reviews() {
       return <p>No reviews available</p>
     }
     return (
-      <ul>
+      <ul className={css.reviewList}>
         {reviews.map(review => (
-          <li key={review.id}>
+          <li className={css.review} key={review.id}>
             <h4>{review.author}</h4>
             <p>{review.content}</p>
           </li>

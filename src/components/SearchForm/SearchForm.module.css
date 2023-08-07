@@ -1,0 +1,23 @@
+.searchForm {
+  margin: 1rem 0 0 1rem
+}
+.searchInput {
+  background-color: transparent;
+  border: 1px solid #414141;
+  color: #fff;
+  margin-right: .3rem;
+  width: 70%;
+  max-width: 20rem;
+}
+
+.submitBtn {
+  background-color: transparent;
+  border: none;
+  transition: all 0.2s ease-in;
+  color: #fff;
+}
+
+.submitBtn:hover {
+  color: #65fe08;
+  text-shadow:0px 0px 30px #65fe08;
+}

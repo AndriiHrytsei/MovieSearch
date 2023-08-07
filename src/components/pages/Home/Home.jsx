@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import fetchData from '../../../fetchData';
+import css from './Home.module.css'
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -33,11 +34,11 @@ export default function Home() {
   if (status === 'resolved') {
     return (
       <main>
-        <h2>Trending today</h2>
+        <h2 className={css.homeHeading}>Trending today</h2>
         <ul>
           {movies.map(movie => (
             <li key={movie.id}>
-              <NavLink to={`movies/${movie.id}`}>
+              <NavLink className={css.navLink} to={`movies/${movie.id}`}>
                 {movie.title || movie.name}
               </NavLink>
             </li>

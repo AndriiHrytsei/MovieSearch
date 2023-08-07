@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import fetchData from '../../fetchData';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import css from './MovieList.module.css'
 
 export default function MovieList({ data }) {
   const [movies, setMovies] = useState([]);
@@ -38,7 +39,7 @@ export default function MovieList({ data }) {
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <NavLink to={`${movie.id}`}>{movie.title || movie.name}</NavLink>
+            <NavLink className={css.navLink} to={`${movie.id}`}>{movie.title || movie.name}</NavLink>
           </li>
         ))}
       </ul>

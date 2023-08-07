@@ -1,0 +1,23 @@
+.header {  
+  width: 100%;
+  min-height: 4.5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  border-bottom: 1px solid #414141;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+} 
+
+.navLink {
+  color: #65fe08;
+  font-size: 1.5em;
+  transition: text-shadow 0.2s ease-in;
+}
+
+.navLink:hover {
+  text-shadow:0px 0px 30px #65fe08;
+}
