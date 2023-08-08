@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import fetchData from '../../../fetchData';
 import css from './Home.module.css';
 
@@ -7,6 +7,7 @@ export default function Home() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('idle');
+  const location = useLocation()
 
   const getMovies = async () => {
     setStatus('pending');
@@ -38,7 +39,7 @@ export default function Home() {
         <ul>
           {movies.map(movie => (
             <li key={movie.id}>
-              <NavLink className={css.navLink} to={`movies/${movie.id}`}>
+              <NavLink className={css.navLink} to={`movies/${movie.id}`} state = {{ from: location }}>
                 {movie.title || movie.name}
               </NavLink>
             </li>

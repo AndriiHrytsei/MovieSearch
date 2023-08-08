@@ -1,4 +1,4 @@
-import { useNavigate, useParams, Outlet, NavLink } from 'react-router-dom';
+import { useParams, Outlet, NavLink, useLocation } from 'react-router-dom';
 import fetchData from '../../../fetchData';
 import { Suspense, useEffect, useState } from 'react';
 import css from './MovieDetails.module.css';
@@ -8,7 +8,8 @@ export default function MovieDetails() {
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('idle');
   const { movieId } = useParams();
-  const navigate = useNavigate();
+  const location = useLocation();
+  const goBackToMovies = location.state?.from ?? '/movies'
 
   const getMovies = async id => {
     setStatus('pending');
@@ -40,14 +41,13 @@ export default function MovieDetails() {
   if (status === 'resolved') {
     return (
       <main className="movieDetailsContainer">
-        <button
+        <NavLink
           className={css.goBackBtn}
-          type="button"
-          onClick={() => navigate(-1)}
+          to={goBackToMovies}
         >
           <span className="material-symbols-outlined">arrow_left_alt</span>
           <span>Go back</span>
-        </button>
+        </NavLink>
         <div className={css.movieDetails}>
           <div className={css.posterBox}>
             <img

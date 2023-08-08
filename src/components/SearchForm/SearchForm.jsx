@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './SearchForm.module.css';
+import { useSearchParams } from 'react-router-dom';
 
 export default function SearchForm({ onSubmit }) {
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams()
+  const query = searchParams.get("query")
+
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -11,7 +13,6 @@ export default function SearchForm({ onSubmit }) {
       return;
     }
     onSubmit(query);
-    setQuery('');
   };
 
   return (
@@ -23,7 +24,7 @@ export default function SearchForm({ onSubmit }) {
         id="searchInput"
         required
         autoFocus
-        onChange={e => setQuery(e.currentTarget.value)}
+        onChange={e => setSearchParams({ query: e.currentTarget.value })}
       />
       <button type="submit" className={css.submitBtn}>
         Search

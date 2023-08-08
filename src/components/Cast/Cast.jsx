@@ -48,7 +48,7 @@ export default function Cast() {
               />
             )}
             <p>{actor.name}</p>
-            <p>Character: {actor.character}</p>
+            <p>Character: {actor.character || 'No info available'}</p>
           </li>
         ))}
       </ul>
