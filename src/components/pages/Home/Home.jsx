@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import fetchData from '../../../fetchData';
 import css from './Home.module.css';
+import noPoster from '../../../images/default.jpg'
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('idle');
-  const location = useLocation()
+  const location = useLocation();
 
   const getMovies = async () => {
     setStatus('pending');
@@ -36,11 +37,19 @@ export default function Home() {
     return (
       <main>
         <h2 className={css.homeHeading}>Trending today</h2>
-        <ul>
+        <ul className={css.movieList}>
           {movies.map(movie => (
-            <li key={movie.id}>
-              <NavLink className={css.navLink} to={`movies/${movie.id}`} state = {{ from: location }}>
-                {movie.title || movie.name}
+            <li key={movie.id} className={css.movie}>
+              <NavLink
+                className={css.navLink}
+                to={`movies/${movie.id}`}
+                state={{ from: location }}
+              >
+                <img
+                  className={css.poster}
+                  src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`: noPoster}
+                  alt={movie.title || movie.name}
+                />
               </NavLink>
             </li>
           ))}

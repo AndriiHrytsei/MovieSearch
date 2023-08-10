@@ -2,6 +2,7 @@ import { useParams, Outlet, NavLink, useLocation } from 'react-router-dom';
 import fetchData from '../../../fetchData';
 import { Suspense, useEffect, useState } from 'react';
 import css from './MovieDetails.module.css';
+import noPoster from '../../../images/default.jpg'
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState({});
@@ -52,7 +53,7 @@ export default function MovieDetails() {
           <div className={css.posterBox}>
             <img
               className={css.poster}
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : noPoster}
               alt=""
             />
           </div>

@@ -3,13 +3,29 @@
   margin: 1rem 0 0 1rem;
 }
 
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movieList li {
+  margin-bottom: 30px;
+}
+
 .navLink {
   color: #fff;
   font-size: 1rem;
-  transition: all 0.2s ease-in;
 }
 
 .navLink:hover {
   color: #65fe08;
   text-shadow: 0px 0px 30px #65fe08;
+}
+
+.poster {
+  width: 90%;
+  aspect-ratio: 2 / 3;
+  border-radius: 5%;
+  max-width: 25rem;
 }

@@ -3,12 +3,13 @@ import fetchData from '../../fetchData';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './MovieList.module.css';
+import noPoster from '../../images/default.jpg'
 
 export default function MovieList({ data }) {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('idle');
-  const location = useLocation()
+  const location = useLocation();
 
   const searchMovies = async q => {
     setStatus('pending');
@@ -37,11 +38,19 @@ export default function MovieList({ data }) {
   }
   if (status === 'resolved') {
     return (
-      <ul>
+      <ul className={css.movieList}>
         {movies.map(movie => (
           <li key={movie.id}>
-            <NavLink className={css.navLink} to={`${movie.id}`} state = {{ from: location }}>
-              {movie.title || movie.name}
+            <NavLink
+              className={css.navLink}
+              to={`${movie.id}`}
+              state={{ from: location }}
+            >
+              <img
+                className={css.poster}
+                src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`: noPoster}
+                alt={movie.title || movie.name}
+              />
             </NavLink>
           </li>
         ))}
