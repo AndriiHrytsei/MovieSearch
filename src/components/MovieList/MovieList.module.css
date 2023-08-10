@@ -2,10 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.movieList li {
-  margin-bottom: 30px;
+  row-gap: 40px;
 }
 
 .navLink {
